@@ -1,24 +1,28 @@
 {
+  "auth": "zef:lucs",
   "authors": [
-    "Luc St-Louis"
+    "Luc St-Louis <lucs@pobox.com>"
   ],
   "build-depends": [
   ],
   "depends": [
+      "Term::termios"
   ],
-  "description": "blah blah blah",
+  "description": "Read wanted key presses from the keyboard buffer",
   "license": "Artistic-2.0",
   "name": "Terminal::KeyReader",
-  "perl": "6.d",
   "provides": {
     "Terminal::KeyReader": "lib/Terminal/KeyReader.rakumod"
   },
+  "raku": "6.*",
   "resources": [
   ],
   "source-url": "",
+  "source-url": "git://github.com/lucs/Terminal-KeyReader.git",
   "tags": [
+    "term"
   ],
   "test-depends": [
   ],
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
