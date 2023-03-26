@@ -458,7 +458,7 @@ if $in-terminal {
 END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
-sub read-key is export(:read-key) {
+our sub read-key is export(:read-key) {
 
      $want-tty-state.setattr(:DRAIN) if $in-terminal;
      LEAVE {$orig-tty-state.setattr(:NOW) if $in-terminal};
