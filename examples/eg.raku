@@ -1,12 +1,14 @@
 #!/usr/bin/env raku
 
 use Terminal::KeyReader :read-key;
+#use Terminal::KeyReader;
 
 # --------------------------------------------------------------------
 multi sub MAIN ('a') {
     my $num = 20;
-    say "Press keys. After $num, the program will end.";
+    say "After you will have pressed $num keys. the program will end.";
     say "Got ", read-key for ^$num;
+   # say "Got ", Terminal::KeyReader::read-key for ^$num;
 }
 
 # --------------------------------------------------------------------
@@ -22,6 +24,7 @@ multi sub MAIN ('b') {
     loop {
         loop {
             $key = read-key;
+           # $key = Terminal::KeyReader::read-key;
             last if $key eq 'CR' | 'LF';
             
                 # Ignore anything but single character results.
