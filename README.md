@@ -1,7 +1,9 @@
+[![Actions Status](https://github.com/lucs/Terminal-KeyReader/actions/workflows/test.yml/badge.svg)](https://github.com/lucs/Terminal-KeyReader/actions)
+
 NAME
 ====
 
-Terminal::KeyReader - blah blah blah
+Terminal::KeyReader - Read key presses from the keyboard buffer
 
 SYNOPSIS
 ========
