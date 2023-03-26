@@ -32,9 +32,9 @@ it under the Artistic License 2.0.
 =end pod
 
 # --------------------------------------------------------------------
-my %keyboard;
-
 my $layout = 'US',
+
+my %keyboard;
 %keyboard<US> =  {
     Buf.new(  0).decode => ｢Ctrl `｣,
     Buf.new(  1).decode => ｢Ctrl A｣,
@@ -435,25 +435,33 @@ my $layout = 'US',
 # --------------------------------------------------------------------
 use Term::termios;
 
-# --------------------------------------------------------------------
-my $tty-fd = $*IN.native-descriptor;
+my $in-terminal = $*IN.t && $*OUT.t;
 
-    # Prepare a raw and unbuffered tty for when we will want to be
-    # reading keys.
-given (my $want-tty-state = Term::termios.new(fd => $tty-fd).getattr) {
-    .makeraw;
+my $orig-tty-state;
+my $want-tty-state;
+
+if $in-terminal {
+    my $tty-fd = $*IN.native-descriptor;
+
+        # Save the original tty state.
+    $orig-tty-state = Term::termios.new(fd => $tty-fd).getattr;
+
+        # Prepare a raw and unbuffered tty for when we will want to be
+        # reading keys.
+    given ($want-tty-state = Term::termios.new(fd => $tty-fd).getattr) {
+        .makeraw;
+    }
 }
 
-    # Save the tty state and ensure that it is restored when we leave
+    # Ensure that the original tty state is restored when we leave
     # this program.
-my $orig-tty-state := Term::termios.new(:fd($tty-fd)).getattr;
-END {$orig-tty-state.setattr(:NOW)};
+END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
-our sub read-key is export(:read-key) {
+sub read-key is export(:read-key) {
 
-    $want-tty-state.setattr(:DRAIN);
-    LEAVE {$orig-tty-state.setattr(:NOW)};
+     $want-tty-state.setattr(:DRAIN) if $in-terminal;
+     LEAVE {$orig-tty-state.setattr(:NOW) if $in-terminal};
 
     my Supplier $supplier .= new;
     my $done = False;
