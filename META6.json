@@ -6,9 +6,9 @@
   "build-depends": [
   ],
   "depends": [
-      "Term::termios"
+    "Term::termios"
   ],
-  "description": "Read wanted key presses from the keyboard buffer",
+  "description": "Read key presses from the keyboard buffer",
   "license": "Artistic-2.0",
   "name": "Terminal::KeyReader",
   "provides": {
@@ -17,7 +17,6 @@
   "raku": "6.*",
   "resources": [
   ],
-  "source-url": "",
   "source-url": "git://github.com/lucs/Terminal-KeyReader.git",
   "tags": [
     "term"
