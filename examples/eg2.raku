@@ -14,7 +14,7 @@ sub MAIN {
     loop {
         loop {
             $key = read-key;
-            last if $key eq 'CR' | 'LF';
+            last if $key eq 'Cr' | 'Lf';
             
                 # Ignore anything but single character results.
             next unless $key.chars == 1;
