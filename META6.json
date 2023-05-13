@@ -10,11 +10,10 @@
   ],
   "description": "Read key presses from the keyboard buffer",
   "license": "Artistic-2.0",
-  "name": "Terminal::KeyReader",
+  "name": "Terminal-KeyReader",
   "provides": {
     "Terminal::KeyReader": "lib/Terminal/KeyReader.rakumod"
   },
-  "raku": "6.*",
   "resources": [
   ],
   "source-url": "git://github.com/lucs/Terminal-KeyReader.git",
@@ -25,3 +24,4 @@
   ],
   "version": "0.1.0"
 }
+
