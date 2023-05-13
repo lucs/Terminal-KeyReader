@@ -36,38 +36,40 @@ my $layout = 'US',
 
 my %keyboard;
 %keyboard<US> =  {
-    Buf.new(  0).decode => ｢Ctrl `｣,
-    Buf.new(  1).decode => ｢Ctrl A｣,
-    Buf.new(  2).decode => ｢Ctrl B｣,
-    Buf.new(  3).decode => ｢Ctrl C｣,
-    Buf.new(  4).decode => ｢Ctrl D｣,
-    Buf.new(  5).decode => ｢Ctrl E｣,
-    Buf.new(  6).decode => ｢Ctrl F｣,
-    Buf.new(  7).decode => ｢Ctrl G｣,
-    Buf.new(  8).decode => ｢Ctrl H｣,
-    Buf.new(  9).decode => ｢Tab｣,
-    Buf.new( 10).decode => ｢LF｣,
-    Buf.new( 11).decode => ｢Ctrl K｣,
-    Buf.new( 12).decode => ｢Ctrl L｣,
-    Buf.new( 13).decode => ｢CR｣,
-    Buf.new( 14).decode => ｢Ctrl N｣,
-    Buf.new( 15).decode => ｢Ctrl O｣,
-    Buf.new( 16).decode => ｢Ctrl P｣,
-    Buf.new( 17).decode => ｢Ctrl Q｣,
-    Buf.new( 18).decode => ｢Ctrl R｣,
-    Buf.new( 19).decode => ｢Ctrl S｣,
-    Buf.new( 20).decode => ｢Ctrl T｣,
-    Buf.new( 21).decode => ｢Ctrl U｣,
-    Buf.new( 22).decode => ｢Ctrl V｣,
-    Buf.new( 23).decode => ｢Ctrl W｣,
-    Buf.new( 24).decode => ｢Ctrl X｣,
-    Buf.new( 25).decode => ｢Ctrl Y｣,
-    Buf.new( 26).decode => ｢Ctrl Z｣,
+    Buf.new(  0).decode => ｢Ctrl@｣,
+    Buf.new(  1).decode => ｢CtrlA｣,
+    Buf.new(  2).decode => ｢CtrlB｣,
+    Buf.new(  3).decode => ｢CtrlC｣,
+    Buf.new(  4).decode => ｢CtrlD｣,
+    Buf.new(  5).decode => ｢CtrlE｣,
+    Buf.new(  6).decode => ｢CtrlF｣,
+    Buf.new(  7).decode => ｢Bel｣,
+    Buf.new(  8).decode => ｢Bs｣,
+    Buf.new(  9).decode => ｢Ht｣,
+    Buf.new( 10).decode => ｢Lf｣,
+    Buf.new( 11).decode => ｢Vt｣,
+    Buf.new( 12).decode => ｢Ff｣,
+    Buf.new( 13).decode => ｢Cr｣,
+    Buf.new( 14).decode => ｢CtrlN｣,
+    Buf.new( 15).decode => ｢CtrlO｣,
+    Buf.new( 16).decode => ｢CtrlP｣,
+    Buf.new( 17).decode => ｢CtrlQ｣,
+    Buf.new( 18).decode => ｢CtrlR｣,
+    Buf.new( 19).decode => ｢CtrlS｣,
+    Buf.new( 20).decode => ｢CtrlT｣,
+    Buf.new( 21).decode => ｢CtrlU｣,
+    Buf.new( 22).decode => ｢CtrlV｣,
+    Buf.new( 23).decode => ｢CtrlW｣,
+    Buf.new( 24).decode => ｢CtrlX｣,
+    Buf.new( 25).decode => ｢CtrlY｣,
+    Buf.new( 26).decode => ｢CtrlZ｣,
     Buf.new( 27).decode => ｢Esc｣,
-    Buf.new( 29).decode => ｢Ctrl ]｣,
-    Buf.new( 30).decode => ｢Ctrl ~｣,
-    Buf.new( 31).decode => ｢Ctrl /｣,
-    Buf.new( 32).decode => ｢ ｣,
+    Buf.new( 28).decode => ｢Fs｣,
+    Buf.new( 29).decode => ｢Gs｣,
+    Buf.new( 30).decode => ｢Rs｣,
+    Buf.new( 31).decode => ｢Us｣,
+
+    Buf.new( 32).decode => ｢Sp｣,     
     Buf.new( 33).decode => ｢!｣,
     Buf.new( 34).decode => ｢"｣,
     Buf.new( 35).decode => ｢#｣,
@@ -162,7 +164,7 @@ my %keyboard;
     Buf.new(124).decode => ｢|｣,
     Buf.new(125).decode => ｢}｣,
     Buf.new(126).decode => ｢~｣,
-    Buf.new(127).decode => ｢Backspace｣,
+    Buf.new(127).decode => ｢Del｣,
 
     Buf.new(27,   0).decode => ｢Ctrl Alt @｣,
     Buf.new(27,   1).decode => ｢Ctrl Alt a｣,
@@ -209,7 +211,6 @@ my %keyboard;
     Buf.new(27,  45).decode => ｢Alt -｣,
     Buf.new(27,  46).decode => ｢Alt .｣,
     Buf.new(27,  47).decode => ｢Alt /｣,
-    Buf.new(27,  48).decode => ｢Alt 0｣,
     Buf.new(27,  48).decode => ｢Alt 0｣,
     Buf.new(27,  49).decode => ｢Alt 1｣,
     Buf.new(27,  50).decode => ｢Alt 2｣,
@@ -289,7 +290,7 @@ my %keyboard;
     Buf.new(27, 124).decode => ｢Alt |｣,
     Buf.new(27, 125).decode => ｢Alt }｣,
     Buf.new(27, 126).decode => ｢Alt ~｣,
-    Buf.new(27, 127).decode => ｢Alt Backspace｣,
+    Buf.new(27, 127).decode => ｢Alt Del｣,
 
     Buf.new(27, 79, 80).decode => ｢F1｣,
     Buf.new(27, 79, 81).decode => ｢F2｣,
@@ -306,8 +307,8 @@ my %keyboard;
 
     Buf.new(27, 91, 50, 126).decode => ｢Insert｣,
     Buf.new(27, 91, 51, 126).decode => ｢Del｣,
-    Buf.new(27, 91, 53, 126).decode => ｢PgUp｣,
-    Buf.new(27, 91, 54, 126).decode => ｢PgDn｣,
+    Buf.new(27, 91, 53, 126).decode => ｢Pgup｣,
+    Buf.new(27, 91, 54, 126).decode => ｢Pgdn｣,
 
     Buf.new(27, 91, 49, 53, 126).decode => ｢F5｣,
     Buf.new(27, 91, 49, 55, 126).decode => ｢F6｣,
@@ -375,12 +376,12 @@ my %keyboard;
     Buf.new(27, 91, 51, 59, 53, 126).decode => ｢Ctrl Del｣,
     Buf.new(27, 91, 51, 59, 54, 126).decode => ｢Ctrl Shift Del｣,
     Buf.new(27, 91, 51, 59, 55, 126).decode => ｢Ctrl Alt Del｣,
-    Buf.new(27, 91, 53, 59, 51, 126).decode => ｢Alt PgUp｣,
-    Buf.new(27, 91, 53, 59, 53, 126).decode => ｢Ctrl PgUp｣,
-    Buf.new(27, 91, 53, 59, 55, 126).decode => ｢Ctrl Alt PgUp｣,
-    Buf.new(27, 91, 54, 59, 51, 126).decode => ｢Alt PgDn｣,
-    Buf.new(27, 91, 54, 59, 53, 126).decode => ｢Ctrl PgDn｣,
-    Buf.new(27, 91, 54, 59, 55, 126).decode => ｢Ctrl Alt PgDn｣,
+    Buf.new(27, 91, 53, 59, 51, 126).decode => ｢Alt Pgup｣,
+    Buf.new(27, 91, 53, 59, 53, 126).decode => ｢Ctrl Pgup｣,
+    Buf.new(27, 91, 53, 59, 55, 126).decode => ｢Ctrl Alt Pgup｣,
+    Buf.new(27, 91, 54, 59, 51, 126).decode => ｢Alt Pgdn｣,
+    Buf.new(27, 91, 54, 59, 53, 126).decode => ｢Ctrl Pgdn｣,
+    Buf.new(27, 91, 54, 59, 55, 126).decode => ｢Ctrl Alt Pgdn｣,
 
     Buf.new(27, 91, 49, 53, 59, 50, 126).decode => ｢Shift F5｣,
     Buf.new(27, 91, 49, 53, 59, 51, 126).decode => ｢Alt F5｣,
@@ -454,14 +455,14 @@ if $in-terminal {
 }
 
     # Ensure that the original tty state is restored when we leave
-    # this program.
+    # a program using this module.
 END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
 our sub read-key is export(:read-key) {
 
-     $want-tty-state.setattr(:DRAIN) if $in-terminal;
-     LEAVE {$orig-tty-state.setattr(:NOW) if $in-terminal};
+    $want-tty-state.setattr(:DRAIN) if $in-terminal;
+    LEAVE {$orig-tty-state.setattr(:NOW) if $in-terminal};
 
     my Supplier $supplier .= new;
     my $done = False;
@@ -481,12 +482,12 @@ our sub read-key is export(:read-key) {
         }
     }
 
-    return %keyboard{$layout}{$char}
-        ?? %keyboard{$layout}{$char}
-        !! $char.substr(0,1) eq Buf.new(27).decode
-        ?? $char.ords
-        !! $char
-    ; 
+    return %keyboard{$layout}{$char} || (
+        $char.substr(0,1) eq Buf.new(27).decode
+            ?? $char.ords
+            !! $char
+        )
+    ;
 
 }
 
