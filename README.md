@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lucs/Terminal-KeyReader/actions/workflows/test.yml/badge.svg)](https://github.com/lucs/Terminal-KeyReader/actions)
+[![Actions Status](https://github.com/lucs/Terminal-KeyReader.git/actions/workflows/test.yml/badge.svg)](https://github.com/lucs/Terminal-KeyReader.git/actions)
 
 NAME
 ====
