@@ -1,6 +1,6 @@
 #!/usr/bin/env raku
 
-use Terminal::KeyReader :read-key;
+use Terminal::KeyReader;
 
 sub MAIN {
     my $key;
@@ -11,10 +11,20 @@ sub MAIN {
         The program will end when you Enter an empty string.
         EoMsg
     ;
+        # Create instance from a supplied default resource file.
+    my $TKR = Terminal::KeyReader.new: 'us';
+    $TKR.claim: "CtrlG", "Bel";
+    $TKR.claim: "CtrlH", "Bs";
+    $TKR.claim: "CtrlI", "Ht";
+    $TKR.claim: "CtrlJ", "Lf";
+    $TKR.claim: "CtrlK", "Vt";
+    $TKR.claim: "CtrlL", "Ff";
+    $TKR.claim: "CtrlM", "Enter";
+
     loop {
         loop {
-            $key = read-key;
-            last if $key eq 'Cr' | 'Lf';
+            $key = $TKR.read-key;
+            last if $key eq 'Enter' | 'Lf';
             
                 # Ignore anything but single character results.
             next unless $key.chars == 1;
