@@ -48,7 +48,7 @@ class KeyDef {
         # ⦃"027003126000000000000"⦄, used for sorting.
     has $.rank;
 
-    method style1-new (
+    method new (
             # "⟨name⟩ ¦ ⟨nums⟩"
             # ⦃"Ctrl F12 ¦ 27 91"⦄
         $str
@@ -62,41 +62,27 @@ class KeyDef {
         my $name = $/<name>;
         my @nums = $/<nums>.comb: /\d+/;
 
-            # Out of the nums, rank. Something like:
-            #   ⦃127⦄        <127000000000000000000>
-            #   ⦃27, 3, 126⦄ <027003126000000000000>
+            # To help sorting.
+            #   ⦃127⦄        : <127000000000000000000>
+            #   ⦃27, 3, 126⦄ : <027003126000000000000>
         my $rank = sprintf(
             '<%-21s>',
             @nums.map({sprintf '%03d', $_}).join,
         ).subst(' ', "0", :g);
 
-       # note "｢$name｣ " ~ @nums.join(".") ~ " $rank";
-        my $root = $name
-            .subst('Ctrl')
-            .subst('Alt')
-            .subst('Shift')
-            .subst(' ', :g)
-        ;
-        my $ctrl = $name ~~ /Ctrl/;
-        my $altt = $name ~~ /Alt/;
-        my $shft = $name ~~ /Shift/;
-
-       # note sprintf "%10s %1s%1s%1s : %s",
-       #     $root,
-       #     $ctrl ?? 'C' !! ' ',
-       #     $altt ?? 'A' !! ' ',
-       #     $shft ?? 'S' !! ' ',
-       #     $name,
-       # ;
-
         return self.bless:
             :$name,
             :@nums,
             :$rank,
-            :$root,
-            :$ctrl,
-            :$altt,
-            :$shft,
+            :root($name
+                .subst('Ctrl')
+                .subst('Alt')
+                .subst('Shift')
+                .subst(' ', :g)
+            ),
+            :ctrl($name ~~ /Ctrl/),
+            :altt($name ~~ /Alt/),
+            :shft($name ~~ /Shift/),
        ;
     }
 
@@ -108,9 +94,11 @@ class Keyboard {
     has @.key-def;
 
     method new ($lines, $line-style) {
+       # note "\$lines has {$lines.chars} chars.";
         my @key-def;
-        for $lines.lines -> $line {
-            next if $line ~~ /^ \s* '#' /;
+        for $lines.list -> $line {
+            next if $line ~~ /^ \s* ['#' | $] /;
+           # note "LINE <$line>";
             @key-def.push: KeyDef.new: $line;
         }
         return self.bless: :@key-def;
@@ -121,25 +109,18 @@ class Keyboard {
     }
 
     method display (
-            # {$^a.rank cmp $^b.rank}.
+            # {$^a.rank cmp $^b.rank}
         &sort-how,
 
-            # -> $kd { sprintf "%s\t%s\t%s\t%s\t%s\t%s\n",
-            #       $kd.name.subst('"', '""', :g),
-            #       $kd.root.subst('"', '""', :g),
-            #       $kd.ctrl ?? 'X' !! '',
-            #       $kd.altt ?? 'X' !! '',
-            #       $kd.shft ?? 'X' !! '',
-            #       $kd.nums.join("\t"),
-            # ; }
+            # -> $kdef { "{$kdef.name}: {$kdef.nums.join('.')} }
         &show-how,
     ) {
         my @sorted_key-def = sort {
             &sort-how($^a, $^b)
         }, @.key-def;
         my $ret-str;
-        for @sorted_key-def -> $kd {
-            $ret-str ~= &show-how($kd);
+        for @sorted_key-def -> $kdef {
+            $ret-str ~= &show-how($kdef);
         }
         return $ret-str;
     }
@@ -172,20 +153,21 @@ if $in-terminal {
 END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
-has $keyboard;
+has $akeyboard;
 has %.kk;
 
 method new (:$resource = 'us', :$line-style = 's1', :$lines) {
+   # note %?RESOURCES{$resource}.IO.slurp;
     my $keyboard = $lines
         ?? Keyboard.new($lines, $line-style)
         !! $resource
         ?? Keyboard.new(%?RESOURCES{$resource}.IO.lines, $line-style)
-        !! die "Moo"
+        !! Keyboard.new('', $line-style)
     ;
     my %kk;
-    for $keyboard.key-def.list -> $kd {
-        note "$kd.name - ", $kd.nums.join: '.';
-        %kk{Buf.new(|$kd.nums).decode} = $kd.name;
+    for $keyboard.key-def.list -> $kdef {
+        note "{$kdef.name} - ", $kdef.nums.join: '.';
+        %kk{Buf.new($kdef.nums.map(*.Int)).decode} = $kdef.name;
     }
     return self.bless: :$keyboard, :%kk;
 }
