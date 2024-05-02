@@ -3,7 +3,7 @@
 use Terminal::KeyReader;
 
 sub MAIN {
-    my $TKR = Terminal::KeyReader.new: 'us';
+    my $TKR = Terminal::KeyReader.new;
 
     True && say $TKR.display(
         {$^a.rank cmp $^b.rank},
