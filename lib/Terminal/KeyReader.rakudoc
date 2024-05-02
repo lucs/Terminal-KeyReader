@@ -1,0 +1,37 @@
+=begin pod
+
+=head1 NAME
+
+    Terminal::KeyReader - Read key presses from the keyboard buffer
+
+=head1 SYNOPSIS
+
+=begin code :lang<raku>
+
+use Terminal::KeyReader;
+
+my $TKR = Terminal::KeyReader.new;
+
+=end code
+
+=head1 DESCRIPTION
+
+I wrote Terminal::KeyReader because in some other program I wanted to
+be able to know which key a user had pressed and act based on that.
+
+Works for US keyboards, but resource files can be constructed for
+other ones.
+
+=head1 AUTHOR
+
+Luc St-Louis <lucs@pobox.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2023 Luc St-Louis
+
+This library is free software; you can redistribute it and/or modify
+it under the Artistic License 2.0.
+
+=end pod
+
