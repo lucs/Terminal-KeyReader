@@ -11,15 +11,7 @@ sub MAIN {
         The program will end when you Enter an empty string.
         EoMsg
     ;
-        # Create instance from a supplied default resource file.
-    my $TKR = Terminal::KeyReader.new: 'us';
-    $TKR.claim: "CtrlG", "Bel";
-    $TKR.claim: "CtrlH", "Bs";
-    $TKR.claim: "CtrlI", "Ht";
-    $TKR.claim: "CtrlJ", "Lf";
-    $TKR.claim: "CtrlK", "Vt";
-    $TKR.claim: "CtrlL", "Ff";
-    $TKR.claim: "CtrlM", "Enter";
+    my $TKR = Terminal::KeyReader.new;
 
     loop {
         loop {
