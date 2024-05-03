@@ -10,7 +10,7 @@ sub MAIN ($nb-keypress = 10) {
 
         # Echo a number of keypresses and stop.
     say "This program will display the keycodes of the keys you press.";
-    say "After you will have pressed $nb-keypress keys. the program will end.";
+    say "After you will have pressed $nb-keypress keys, the program will end.";
     say $tkr.read-key for ^$nb-keypress;
 }
 
