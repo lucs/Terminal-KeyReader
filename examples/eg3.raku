@@ -5,7 +5,7 @@ use Terminal::KeyReader;
 sub MAIN {
     my $TKR = Terminal::KeyReader.new;
 
-    True && say $TKR.display(
+    True && say $TKR.kbd.display(
         {$^a.rank cmp $^b.rank},
         -> $kdef { sprintf "%20s   %s%s%s %-10s %s\n",
               $kdef.name,
@@ -18,7 +18,7 @@ sub MAIN {
         ; },
     );
 
-    False && say $TKR.display(
+    False && say $TKR.kbd.display(
         {$^a.rank cmp $^b.rank},
         -> $kdef { sprintf "%s\t%s\t%s\t%s\t%s\t%s\n",
               $kdef.name.subst('"', '""', :g),
