@@ -17,7 +17,7 @@ my $dt = Debugging::Tool.new;
 
 class KeyDef {
         
-    has $.name; # ⦃"Shift Tab"⦄
+    has $.name; # ⦃"ShiftTab"⦄
     has $.root; # ⌊"Tab"⌉
     has $.ctrl; # ⌊False⌉
     has $.altt; # ⌊False⌉
@@ -31,16 +31,17 @@ class KeyDef {
 
     method new (
             # "⟨name⟩ ¦ ⟨kcod⟩", ⦃"Shift Tab ¦ 27 91 90"⦄.
-        $str
+        $name-kcod
     ) {
-        $str ~~ /
+        $name-kcod ~~ /
             ^ \s*
             $<name> = [ .*? ] \s* '¦' \s*
             $<kcod> = [ .*? ]
             \s* $
         /;
-        my $name = $/<name>;
+        my $name = ~$/<name>;
         my @kcod = $/<kcod>.comb: /\d+/;
+        $name ~~ s:g/ \s //;
 
             # To help sorting.
             #   ⦃127⦄        : <127000000000000000000>
@@ -72,21 +73,28 @@ class KeyDef {
 #`(
     Holds what is known about a keyboard's key definitions.
 
-    The constructor takes the key name and the keycodes, in a string
-    formatted like "⟨name⟩ ¦ ⟨kcod⟩", ⦃"Shift Tab ¦ 27 91 90"⦄.
+    The constructor takes
 )
 
 class Keyboard {
 
     has @.key-def;
+    has %.kcod-to-name;
 
-    method new ($lines) {
+    method new ($name-kcod-lines) {
+        $dt.put: "name-kcod-lines ", $name-kcod-lines;
         my @key-def;
-        for $lines.list -> $line {
-            next if $line ~~ /^ \s* ['#' | $] /;
-            @key-def.push: KeyDef.new: $line;
+        for $name-kcod-lines.lines -> $name-kcod {
+            next if $name-kcod ~~ /^ \s* ['#' | $] /;
+            @key-def.push: KeyDef.new: $name-kcod;
         }
-        return self.bless: :@key-def;
+        my %kcod-to-name;
+        for @key-def -> $kdef {
+            my $kcod = Buf.new($kdef.kcod.map(*.Int)).decode;
+            %kcod-to-name{$kcod} = $kdef.name;
+        }
+        $dt.put: "LEMS ", @key-def.elems;
+        return self.bless: :@key-def, :%kcod-to-name;
     }
 
     method display (
@@ -96,6 +104,8 @@ class Keyboard {
             # -> $kdef { "{$kdef.name}: {$kdef.kcod.join('.')} }
         &show-how,
     ) {
+        $dt.put: "lems ", self.key-def.elems;
+        $dt.put: "lems ", self.key-def.WHAT;
         my @sorted_key-def = sort {
             &sort-how($^a, $^b)
         }, @.key-def;
@@ -111,8 +121,7 @@ class Keyboard {
 # --------------------------------------------------------------------
 use Term::termios;
 
-has Keyboard $!kbd;
-has %.kk;
+has Keyboard $.kbd;
 
 my $in-terminal = $*IN.t && $*OUT.t;
 
@@ -138,19 +147,22 @@ END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
 
-method new (:$resource = 'us', :$lines) {
-   # note %?RESOURCES{$resource}.IO.slurp;
-    my $kbd = $lines ?? Keyboard.new($lines)
-        !! $resource
-        ?? Keyboard.new(%?RESOURCES{$resource}.IO.lines)
-        !! Keyboard.new('')
-    ;
-    my %kk;
-    for $kbd.key-def.list -> $kdef {
-       # $dt.put: "{$kdef.name} - ", $kdef.kcod.join: '.';
-        %kk{Buf.new($kdef.kcod.map(*.Int)).decode} = $kdef.name;
+method new (
+    :$resource = 'us',
+    :$name-kcod-file,
+) {
+    my $name-kcod-lines = '';
+    
+    if $resource {
+        $name-kcod-lines ~= %?RESOURCES{"$resource.layout"}.absolute.IO.slurp;
     }
-    return self.bless: :$kbd, :%kk;
+    if $name-kcod-file {
+        $name-kcod-lines ~= $name-kcod-file.IO.slurp;
+    }
+
+   # note $name-kcod-lines;
+    my $kbd = Keyboard.new($name-kcod-lines);
+    return self.bless: :$kbd;
 }
 
 # --------------------------------------------------------------------
@@ -163,26 +175,29 @@ method read-key {
     my $done = False;
     my $supply = $supplier.Supply.on-close: { $done = True };
 
-    my $char;
+    my $kcod;
     start {
         until $done {
-            my $char = $*IN.read(10).decode;
-            $supplier.emit: $char;
+            my $kcod = $*IN.read(10).decode;
+            $supplier.emit: $kcod;
         }
     }
     react {
         whenever $supply {
-            $char = $_;
+            $kcod = $_;
             done();
         }
     }
 
-    return %!kk{$char} || $char.ords;
+    return $!kbd.kcod-to-name{$kcod} || ~$kcod.ords;
 
-   # return %!kk{$char} || (
-   #     $char.substr(0, 1) eq Buf.new(27).decode
-   #         ?? $char.ords
-   #         !! "⟨$char⟩"
+   # Alt Pgdn            ¦ 27 91 54 59 51 126
+
+   #     # Not sure what this old code was about.
+   # return %!kcod-to-name{$kcod} || (
+   #     $kcod.substr(0, 1) eq Buf.new(27).decode
+   #         ?? $kcod.ords
+   #         !! "⟨$kcod⟩"
    #     )
    # ;
 
