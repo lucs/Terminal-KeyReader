@@ -16,21 +16,21 @@
 # }
 
 # --------------------------------------------------------------------
-    Ctrl@               ¦ 0
-    CtrlA               ¦ 1
-    CtrlB               ¦ 2
-    CtrlC               ¦ 3
-    CtrlD               ¦ 4
-    CtrlE               ¦ 5
-    CtrlF               ¦ 6
+    Ctrl @              ¦ 0
+    Ctrl A              ¦ 1
+    Ctrl B              ¦ 2
+    Ctrl C              ¦ 3
+    Ctrl D              ¦ 4
+    Ctrl E              ¦ 5
+    Ctrl F              ¦ 6
 
-    CtrlG               ¦ 7
-    CtrlH               ¦ 8
-    CtrlI               ¦ 9
-    CtrlJ               ¦ 10
-    CtrlK               ¦ 11
-    CtrlL               ¦ 12
-    CtrlM               ¦ 13
+    Ctrl G              ¦ 7
+    Ctrl H              ¦ 8
+    Ctrl I              ¦ 9
+    Ctrl J              ¦ 10
+    Ctrl K              ¦ 11
+    Ctrl L              ¦ 12
+    Ctrl M              ¦ 13
    # Bel                 ¦ 7
    # Bs                  ¦ 8
    # Ht                  ¦ 9
@@ -39,19 +39,19 @@
    # Ff                  ¦ 12
    # Cr                  ¦ 13
 
-    CtrlN               ¦ 14
-    CtrlO               ¦ 15
-    CtrlP               ¦ 16
-    CtrlQ               ¦ 17
-    CtrlR               ¦ 18
-    CtrlS               ¦ 19
-    CtrlT               ¦ 20
-    CtrlU               ¦ 21
-    CtrlV               ¦ 22
-    CtrlW               ¦ 23
-    CtrlX               ¦ 24
-    CtrlY               ¦ 25
-    CtrlZ               ¦ 26
+    Ctrl N              ¦ 14
+    Ctrl O              ¦ 15
+    Ctrl P              ¦ 16
+    Ctrl Q              ¦ 17
+    Ctrl R              ¦ 18
+    Ctrl S              ¦ 19
+    Ctrl T              ¦ 20
+    Ctrl U              ¦ 21
+    Ctrl V              ¦ 22
+    Ctrl W              ¦ 23
+    Ctrl X              ¦ 24
+    Ctrl Y              ¦ 25
+    Ctrl Z              ¦ 26
 
     Esc                 ¦ 27
     Fs                  ¦ 28
@@ -154,37 +154,46 @@
     }                   ¦ 125
     ~                   ¦ 126
     Del                 ¦ 127
+
     Ctrl Alt @          ¦ 27 0
-    Ctrl Alt a          ¦ 27 1
-    Ctrl Alt b          ¦ 27 2
-    Ctrl Alt c          ¦ 27 3
-    Ctrl Alt d          ¦ 27 4
-    Ctrl Alt e          ¦ 27 5
-    Ctrl Alt f          ¦ 27 6
-    Ctrl Alt g          ¦ 27 7
-    Ctrl Alt h          ¦ 27 8
-    Ctrl Alt i          ¦ 27 9
-    Ctrl Alt j          ¦ 27 10
+    Ctrl Alt A          ¦ 27 1
+    Ctrl Alt B          ¦ 27 2
+    Ctrl Alt C          ¦ 27 3
+    Ctrl Alt D          ¦ 27 4
+    Ctrl Alt E          ¦ 27 5
+    Ctrl Alt F          ¦ 27 6
+    Ctrl Alt G          ¦ 27 7
+    Ctrl Alt H          ¦ 27 8
+    Ctrl Alt I          ¦ 27 9
+    Ctrl Alt J          ¦ 27 10
    # Alt Enter           ¦ 27 10
-    Ctrl Alt k          ¦ 27 11
-    Ctrl Alt l          ¦ 27 12
-    Ctrl Alt m          ¦ 27 13
-    Ctrl Alt n          ¦ 27 14
-    Ctrl Alt o          ¦ 27 15
-    Ctrl Alt p          ¦ 27 16
-    Ctrl Alt q          ¦ 27 17
-    Ctrl Alt r          ¦ 27 18
-    Ctrl Alt s          ¦ 27 19
-    Ctrl Alt t          ¦ 27 20
-    Ctrl Alt u          ¦ 27 21
-    Ctrl Alt v          ¦ 27 22
-    Ctrl Alt w          ¦ 27 23
-    Ctrl Alt x          ¦ 27 24
-    Ctrl Alt y          ¦ 27 25
-    Ctrl Alt z          ¦ 27 26
-    Alt Esc             ¦ 27 27
-    Ctrl Alt ^          ¦ 27 29
+    Ctrl Alt K          ¦ 27 11
+    Ctrl Alt L          ¦ 27 12
+    Ctrl Alt M          ¦ 27 13
+    Ctrl Alt N          ¦ 27 14
+    Ctrl Alt O          ¦ 27 15
+    Ctrl Alt P          ¦ 27 16
+    Ctrl Alt Q          ¦ 27 17
+    Ctrl Alt R          ¦ 27 18
+    Ctrl Alt S          ¦ 27 19
+    Ctrl Alt T          ¦ 27 20
+    Ctrl Alt U          ¦ 27 21
+    Ctrl Alt V          ¦ 27 22
+    Ctrl Alt W          ¦ 27 23
+    Ctrl Alt X          ¦ 27 24
+    Ctrl Alt Y          ¦ 27 25
+    Ctrl Alt Z          ¦ 27 26
+   # Alt Esc             ¦ 27 27
+    Ctrl Alt [          ¦ 27 27
+    Ctrl Alt \          ¦ 27 28
+    Ctrl Alt ]          ¦ 27 29
     Ctrl Alt ^          ¦ 27 30
+
+        # I'm getting <27 30> for some reason. ☰2024-05-03.Fri
+    Ctrl Alt ~          ¦ 27 31
+
+    Ctrl Alt Del        ¦ 27 32
+
     Alt !               ¦ 27 33
     Alt "               ¦ 27 34
     Alt #               ¦ 27 35
@@ -217,69 +226,70 @@
     Alt >               ¦ 27 62
     Alt ?               ¦ 27 63
     Alt @               ¦ 27 64
-    Alt A               ¦ 27 65
-    Alt B               ¦ 27 66
-    Alt C               ¦ 27 67
-    Alt D               ¦ 27 68
-    Alt E               ¦ 27 69
-    Alt F               ¦ 27 70
-    Alt G               ¦ 27 71
-    Alt H               ¦ 27 72
-    Alt I               ¦ 27 73
-    Alt J               ¦ 27 74
-    Alt K               ¦ 27 75
-    Alt L               ¦ 27 76
-    Alt M               ¦ 27 77
-    Alt N               ¦ 27 78
-    Alt O               ¦ 27 79
-    Alt P               ¦ 27 80
-    Alt Q               ¦ 27 81
-    Alt R               ¦ 27 82
-    Alt S               ¦ 27 83
-    Alt T               ¦ 27 84
-    Alt U               ¦ 27 85
-    Alt V               ¦ 27 86
-    Alt W               ¦ 27 87
-    Alt X               ¦ 27 88
-    Alt Y               ¦ 27 89
-    Alt Z               ¦ 27 90
+    Alt Shift A         ¦ 27 65
+    Alt Shift B         ¦ 27 66
+    Alt Shift C         ¦ 27 67
+    Alt Shift D         ¦ 27 68
+    Alt Shift E         ¦ 27 69
+    Alt Shift F         ¦ 27 70
+    Alt Shift G         ¦ 27 71
+    Alt Shift H         ¦ 27 72
+    Alt Shift I         ¦ 27 73
+    Alt Shift J         ¦ 27 74
+    Alt Shift K         ¦ 27 75
+    Alt Shift L         ¦ 27 76
+    Alt Shift M         ¦ 27 77
+    Alt Shift N         ¦ 27 78
+    Alt Shift O         ¦ 27 79
+    Alt Shift P         ¦ 27 80
+    Alt Shift Q         ¦ 27 81
+    Alt Shift R         ¦ 27 82
+    Alt Shift S         ¦ 27 83
+    Alt Shift T         ¦ 27 84
+    Alt Shift U         ¦ 27 85
+    Alt Shift V         ¦ 27 86
+    Alt Shift W         ¦ 27 87
+    Alt Shift X         ¦ 27 88
+    Alt Shift Y         ¦ 27 89
+    Alt Shift Z         ¦ 27 90
     Alt [               ¦ 27 91
     Alt \               ¦ 27 92
     Alt ]               ¦ 27 93
     Alt ^               ¦ 27 94
     Alt _               ¦ 27 95
     Alt `               ¦ 27 96
-    Alt a               ¦ 27 97
-    Alt b               ¦ 27 98
-    Alt c               ¦ 27 99
-    Alt d               ¦ 27 100
-    Alt e               ¦ 27 101
-    Alt f               ¦ 27 102
-    Alt g               ¦ 27 103
-    Alt h               ¦ 27 104
-    Alt i               ¦ 27 105
-    Alt j               ¦ 27 106
-    Alt k               ¦ 27 107
-    Alt l               ¦ 27 108
-    Alt m               ¦ 27 109
-    Alt n               ¦ 27 110
-    Alt o               ¦ 27 111
-    Alt p               ¦ 27 112
-    Alt q               ¦ 27 113
-    Alt r               ¦ 27 114
-    Alt s               ¦ 27 115
-    Alt t               ¦ 27 116
-    Alt u               ¦ 27 117
-    Alt v               ¦ 27 118
-    Alt w               ¦ 27 119
-    Alt x               ¦ 27 120
-    Alt y               ¦ 27 121
-    Alt z               ¦ 27 122
+    Alt A               ¦ 27 97
+    Alt B               ¦ 27 98
+    Alt C               ¦ 27 99
+    Alt D               ¦ 27 100
+    Alt E               ¦ 27 101
+    Alt F               ¦ 27 102
+    Alt G               ¦ 27 103
+    Alt H               ¦ 27 104
+    Alt I               ¦ 27 105
+    Alt J               ¦ 27 106
+    Alt K               ¦ 27 107
+    Alt L               ¦ 27 108
+    Alt M               ¦ 27 109
+    Alt N               ¦ 27 110
+    Alt O               ¦ 27 111
+    Alt P               ¦ 27 112
+    Alt Q               ¦ 27 113
+    Alt R               ¦ 27 114
+    Alt S               ¦ 27 115
+    Alt T               ¦ 27 116
+    Alt U               ¦ 27 117
+    Alt V               ¦ 27 118
+    Alt W               ¦ 27 119
+    Alt X               ¦ 27 120
+    Alt Y               ¦ 27 121
+    Alt Z               ¦ 27 122
     Alt {               ¦ 27 123
     Alt |               ¦ 27 124
     Alt }               ¦ 27 125
     Alt ~               ¦ 27 126
     Alt Del             ¦ 27 127
+
     F1                  ¦ 27 79 80
     F2                  ¦ 27 79 81
     F3                  ¦ 27 79 82
