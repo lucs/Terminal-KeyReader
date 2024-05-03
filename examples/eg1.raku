@@ -6,7 +6,7 @@ sub MAIN {
 
         # The constructor will use a test resource file,
         # where only a few keys are defined.
-    my $TKR = Terminal::KeyReader.new: :resource('test.layout');
+    my $TKR = Terminal::KeyReader.new: :resource('test');
 
         # Echo a number of keypresses and stop.
     my $num = 10;
