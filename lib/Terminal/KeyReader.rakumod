@@ -147,7 +147,7 @@ method new (
     my $name-kcod-lines = '';
     
     if $resource {
-        $name-kcod-lines ~= %?RESOURCES{"$resource.layout"}.absolute.IO.slurp;
+        $name-kcod-lines ~= %?RESOURCES{"$resource.layout"}.IO.slurp;
     }
     if $name-kcod-file {
         $name-kcod-lines ~= $name-kcod-file.IO.slurp;
