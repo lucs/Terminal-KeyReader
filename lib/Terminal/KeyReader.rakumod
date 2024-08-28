@@ -1,8 +1,5 @@
 unit class Terminal::KeyReader;
 
-use Debugging::Tool;
-my $dt = Debugging::Tool.new;
-
 # --------------------------------------------------------------------
 #`(
     Holds what is known about a key press.
@@ -82,7 +79,6 @@ class Keyboard {
     has %.kcod-to-name;
 
     method new ($name-kcod-lines) {
-        $dt.put: "name-kcod-lines ", $name-kcod-lines;
         my @key-def;
         for $name-kcod-lines.lines -> $name-kcod {
             next if $name-kcod ~~ /^ \s* ['#' | $] /;
@@ -93,7 +89,6 @@ class Keyboard {
             my $kcod = Buf.new($kdef.kcod.map(*.Int)).decode;
             %kcod-to-name{$kcod} = $kdef.name;
         }
-        $dt.put: "LEMS ", @key-def.elems;
         return self.bless: :@key-def, :%kcod-to-name;
     }
 
@@ -104,8 +99,6 @@ class Keyboard {
             # -> $kdef { "{$kdef.name}: {$kdef.kcod.join('.')} }
         &show-how,
     ) {
-        $dt.put: "lems ", self.key-def.elems;
-        $dt.put: "lems ", self.key-def.WHAT;
         my @sorted_key-def = sort {
             &sort-how($^a, $^b)
         }, @.key-def;
