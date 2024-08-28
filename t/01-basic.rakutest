@@ -1,7 +1,7 @@
 use Test;
 use Terminal::KeyReader;
 
-pass "No tests. See the 'examples' directory instead.
+pass "No tests. See the 'examples' directory instead.";
 
 done-testing;
 
