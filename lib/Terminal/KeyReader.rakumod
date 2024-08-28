@@ -1,4 +1,4 @@
-unit class Terminal::KeyReader;
+unit class Terminal::KeyReader:ver<0.1.1>:auth<zef:lucs>;
 
 # --------------------------------------------------------------------
 #`(

@@ -1,4 +1,8 @@
 Revision history for Terminal-KeyReader
 
-{{$NEXT}}
-    - Initial version
+0.1.1 2024-08-28T11:13:48-04:00
+    - Fixed typo, removes unused stuff.
+
+0.1.0 2024-05-03T15:33:00-04:00
+    - Initial release
+
