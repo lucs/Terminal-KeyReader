@@ -6,12 +6,10 @@
 
 =head1 SYNOPSIS
 
-=begin code :lang<raku>
-
+=begin code
 use Terminal::KeyReader;
 
 my $TKR = Terminal::KeyReader.new;
-
 =end code
 
 =head1 DESCRIPTION
