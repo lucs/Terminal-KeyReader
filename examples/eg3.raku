@@ -13,8 +13,8 @@ sub MAIN {
               $kdef.altt ?? 'a' !! '_',
               $kdef.shft ?? 's' !! '_',
               $kdef.root,
-              $kdef.nums.map({sprintf '%s', $_}).join(" "),
-             # $kdef.nums.join("\t"),
+              $kdef.kcod.map({sprintf '%s', $_}).join(" "),
+             # $kdef.kcod.join("\t"),
         ; },
     );
 
@@ -26,7 +26,7 @@ sub MAIN {
               $kdef.ctrl ?? 'x' !! '',
               $kdef.altt ?? 'x' !! '',
               $kdef.shft ?? 'x' !! '',
-              $kdef.nums.join("\t"),
+              $kdef.kcod.join("\t"),
         ; },
     );
 
