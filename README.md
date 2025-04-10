@@ -3,19 +3,21 @@
 NAME
 ====
 
-Terminal::KeyReader - Read key presses from the keyboard buffer
+    Terminal::KeyReader - Read key presses from the keyboard buffer
 
 SYNOPSIS
 ========
 
-```raku
-use Terminal::KeyReader;
-```
+    use Terminal::KeyReader;
+
+    my $TKR = Terminal::KeyReader.new;
 
 DESCRIPTION
 ===========
 
-Terminal::KeyReader is ...
+I wrote Terminal::KeyReader because in some other program I wanted to be able to know which key a user had pressed and act based on that.
+
+Works for US keyboards, but resource files can be constructed for other ones.
 
 AUTHOR
 ======
