@@ -93,10 +93,10 @@ class Keyboard {
     }
 
     method display (
-            # {$^a.rank cmp $^b.rank}
+            # ⦃ {$^a.rank cmp $^b.rank} ⦄
         &sort-how,
 
-            # -> $kdef { "{$kdef.name}: {$kdef.kcod.join('.')} }
+            # ⦃ -> $kdef { "{$kdef.name}: {$kdef.kcod.join('.')} } ⦄
         &show-how,
     ) {
         my @sorted_key-def = sort {
@@ -139,7 +139,6 @@ if $in-terminal {
 END {$orig-tty-state.setattr: :NOW if $in-terminal};
 
 # --------------------------------------------------------------------
-
 method new (
     :$resource = 'us',
     :$name-kcod-file,
