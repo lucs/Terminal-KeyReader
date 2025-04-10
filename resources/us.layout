@@ -16,42 +16,62 @@
 # }
 
 # --------------------------------------------------------------------
-    Ctrl @              ¦ 0
-    Ctrl A              ¦ 1
-    Ctrl B              ¦ 2
-    Ctrl C              ¦ 3
-    Ctrl D              ¦ 4
-    Ctrl E              ¦ 5
-    Ctrl F              ¦ 6
 
-    Ctrl G              ¦ 7
-    Ctrl H              ¦ 8
-    Ctrl I              ¦ 9
-    Ctrl J              ¦ 10
-    Ctrl K              ¦ 11
-    Ctrl L              ¦ 12
-    Ctrl M              ¦ 13
-   # Bel                 ¦ 7
-   # Bs                  ¦ 8
-   # Ht                  ¦ 9
-   # Lf                  ¦ 10
-   # Vt                  ¦ 11
-   # Ff                  ¦ 12
-   # Cr                  ¦ 13
+   # Ctrl @              ¦ 0
+   # Ctrl A              ¦ 1
+   # Ctrl B              ¦ 2
+   # Ctrl C              ¦ 3
+   # Ctrl D              ¦ 4
+   # Ctrl E              ¦ 5
+   # Ctrl F              ¦ 6
+   # Ctrl G              ¦ 7
+   # Ctrl H              ¦ 8
+   # Ctrl I              ¦ 9
+   # Ctrl J              ¦ 10
+   # Ctrl K              ¦ 11
+   # Ctrl L              ¦ 12
+   # Ctrl M              ¦ 13
+   # Ctrl N              ¦ 14
+   # Ctrl O              ¦ 15
+   # Ctrl P              ¦ 16
+   # Ctrl Q              ¦ 17
+   # Ctrl R              ¦ 18
+   # Ctrl S              ¦ 19
+   # Ctrl T              ¦ 20
+   # Ctrl U              ¦ 21
+   # Ctrl V              ¦ 22
+   # Ctrl W              ¦ 23
+   # Ctrl X              ¦ 24
+   # Ctrl Y              ¦ 25
+   # Ctrl Z              ¦ 26
 
-    Ctrl N              ¦ 14
-    Ctrl O              ¦ 15
-    Ctrl P              ¦ 16
-    Ctrl Q              ¦ 17
-    Ctrl R              ¦ 18
-    Ctrl S              ¦ 19
-    Ctrl T              ¦ 20
-    Ctrl U              ¦ 21
-    Ctrl V              ¦ 22
-    Ctrl W              ¦ 23
-    Ctrl X              ¦ 24
-    Ctrl Y              ¦ 25
-    Ctrl Z              ¦ 26
+    Nul                 ¦ 0
+    Soh                 ¦ 1
+    Stx                 ¦ 2
+    Etx                 ¦ 3
+    Eot                 ¦ 4
+    Enq                 ¦ 5
+    Ack                 ¦ 6
+    Bel                 ¦ 7
+    Bs                  ¦ 8
+    Ht                  ¦ 9
+    Lf                  ¦ 10
+    Vt                  ¦ 11
+    Ff                  ¦ 12
+    Cr                  ¦ 13
+    So                  ¦ 14
+    Si                  ¦ 15
+    Dle                 ¦ 16
+    Dc1                 ¦ 17
+    Dc2                 ¦ 18
+    Dc3                 ¦ 19
+    Dc4                 ¦ 20
+    Nak                 ¦ 21
+    Syn                 ¦ 22
+    Etb                 ¦ 23
+    Can                 ¦ 24
+    Em                  ¦ 25
+    Sub                 ¦ 26
 
     Esc                 ¦ 27
     Fs                  ¦ 28
