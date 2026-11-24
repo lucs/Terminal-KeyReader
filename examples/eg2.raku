@@ -17,7 +17,6 @@ sub MAIN {
         loop {
             $key = $TKR.read-key;
             last if $key eq 'Cr' | 'Lf';
-            
                 # Ignore anything but single character results.
             next unless $key.chars == 1;
             say "key: $key";
