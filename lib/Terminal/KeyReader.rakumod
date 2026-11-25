@@ -13,7 +13,7 @@ unit class Terminal::KeyReader:ver<0.1.1>:auth<zef:lucs>;
 )
 
 class KeyDef {
-        
+
     has $.name; # ⦃"ShiftTab"⦄
     has $.root; # ⌊"Tab"⌉
     has $.ctrl; # ⌊False⌉
@@ -144,7 +144,7 @@ method new (
     :$name-kcod-file,
 ) {
     my $name-kcod-lines = '';
-    
+
     if $resource {
         $name-kcod-lines ~= %?RESOURCES{"$resource.layout"}.IO.slurp;
     }
